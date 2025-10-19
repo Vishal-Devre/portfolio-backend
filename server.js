@@ -7,7 +7,7 @@ import fetch from "node-fetch";
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
@@ -36,7 +36,7 @@ app.post("/chat", async (req, res) => {
       headers: {
         "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "http://localhost:5173",
+        "HTTP-Referer": "",
         "X-Title": "Portfolio Chatbot"
       },
       body: JSON.stringify({
